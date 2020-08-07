@@ -2,5 +2,6 @@
 *~
 __pycahe__
 teamvenv
+.idea
 db.sqlite3
 /static

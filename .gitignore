@@ -1,0 +1,6 @@
+*.pyc
+*~
+__pycahe__
+teamvenv
+db.sqlite3
+/static

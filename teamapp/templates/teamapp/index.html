@@ -10,28 +10,24 @@
         <caption>Рейтинг ресторанов</caption>
             <thead align="center" >
                 <tr>
-                    <th colspan="5"><a href="http://surl.li/eqbp">Список Ресторанов</a></th>
+                    <th colspan="3">Список Ресторанов</th>
+                    <th>Лучший ресторан</th>
                 </tr>
             </thead>
             <thead align="center">
                 <tr>
-                    <th><a href="http://surl.li/eqbo">Рестораны</a></th>
+                    <th>Рестораны</th>
                     <th width="50%">Описание</th>
                     <th>Рейтинг</th>
-                    <th>Лучший ресторан</th>
+                    <th></th>
                 </tr>
             </thead>
+            {% for list in lists %}
             <tbody>
                 <tr>
-                    <td>Rojo</td><td>Тест1</td><td>3</td><td>Bufalino</td>
+                    <td>{{ list.title }}</td><td>{{ list.description }}</td><td>{{ list.rating }}</td>
                 </tr>
-                <tr>
-                    <td>Bufalino</td><td>Тест2</td><td>8</td>
-                </tr>
-                <tr>
-                    <td>Perets</td><td>Тест3</td><td>5</td>
-                </tr>
-            </tbody>
+            {% endfor %}
         </table>
     </body>
 </html>

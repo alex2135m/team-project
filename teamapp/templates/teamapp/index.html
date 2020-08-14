@@ -10,8 +10,7 @@
         <caption>Рейтинг ресторанов</caption>
             <thead align="center" >
                 <tr>
-                    <th colspan="3">Список Ресторанов</th>
-                    <th>Лучший ресторан</th>
+                    <th colspan="4">Список Ресторанов</th>
                 </tr>
             </thead>
             <thead align="center">
@@ -19,7 +18,7 @@
                     <th>Рестораны</th>
                     <th width="50%">Описание</th>
                     <th>Рейтинг</th>
-                    <th></th>
+                    <th><a href="{% url 'top' %}">Лучший ресторан</a></th>
                 </tr>
             </thead>
             {% for list in lists %}
@@ -27,6 +26,7 @@
                 <tr>
                     <td>{{ list.title }}</td><td>{{ list.description }}</td><td>{{ list.rating }}</td>
                 </tr>
+            </tbody>
             {% endfor %}
         </table>
     </body>

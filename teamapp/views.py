@@ -4,4 +4,11 @@ from .models import List
 
 def index(request):
     lists = List.objects.all()
-    return render(request, 'teamapp/index.html', {'lists': lists})
+    context = {'lists': lists}
+    return render(request, 'teamapp/index.html', context)
+
+
+def top(request):
+    tops = List.objects.order_by('-rating')[:1]
+    context = {'tops': tops}
+    return render(request, 'teamapp/top.html', context)

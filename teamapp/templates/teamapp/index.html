@@ -1,18 +1,26 @@
 {% extends "layout/base.html" %}
 
+<!--
+наследие базового шаблона с командами шаблонизатора,
+шаблон таблицы с выводом всех объектов из БД
+-->
+
 {% block title %}Главная страница{%endblock%}
+
 {% block content %}
         <table align="center" border="1" width="1200" cellpadding="30">
             <caption>Рейтинг ресторанов</caption>
             <thead align="center">
                 <tr>
-                    <th colspan="4">Список Ресторанов</th>
+                    <th colspan="6">Список Ресторанов</th>
                 </tr>
             </thead>
             <thead align="center">
             <tr>
                 <th>Рестораны</th>
                 <th width="50%">Описание</th>
+                <th>Адрес</th>
+                <th>Почта</th>
                 <th>Рейтинг</th>
                 <th><a href="{% url 'top' %}">Лучший ресторан</a></th>
             </tr>
@@ -20,7 +28,11 @@
             {% for list in lists %}
             <tbody>
                 <tr>
-                    <td><a href="{% url 'detail' pk=list.pk %}">{{ list.title }}</a></td><td>{{ list.description }}</td><td>{{ list.rating }}</td>
+                    <td><a href="{% url 'detail' pk=list.pk %}">{{ list.title }}</a></td>
+                    <td>{{ list.description }}</td>
+                    <td>{{ list.address }}</td>
+                    <td>{{ list.mailbox }}</td>
+                    <td>{{ list.rating }}</td>
                 </tr>
             </tbody>
             {% endfor %}

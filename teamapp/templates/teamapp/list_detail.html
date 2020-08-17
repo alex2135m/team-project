@@ -1,5 +1,10 @@
 {% extends "layout/base.html" %}
 
+<!--
+наследие базового шаблона с командами шаблонизатора,
+шаблон таблицы с выводом детального обзора объекта из БД
+-->
+
 {% block title %}Ресторан{% endblock %}
 
 {% block content %}
@@ -7,20 +12,26 @@
     <caption><a href="{% url 'index' %}">Рейтинг ресторанов</a></caption>
     <thead align="center">
         <tr>
-            <th colspan="4">Детальный обзор</th>
+            <th colspan="6">Детальный обзор</th>
         </tr>
     </thead>
     <thead align="center">
     <tr>
         <th>Ресторан</th>
         <th width="50%">Описание</th>
+        <th>Адрес</th>
+        <th>Почта</th>
         <th>Рейтинг</th>
         <th><a href="{% url 'top' %}">Лучший ресторан</a></th>
     </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ list.title }}</td><td>{{ list.description }}</td><td>{{ list.rating }}</td>
+            <td>{{ list.title }}</td>
+            <td>{{ list.description }}</td>
+            <td>{{ list.address }}</td>
+            <td>{{ list.mailbox }}</td>
+            <td>{{ list.rating }}</td>
         </tr>
     </tbody>
 </table>

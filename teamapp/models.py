@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.forms import ModelForm
 
 
 # представление строк в БД
@@ -17,6 +18,6 @@ class List(models.Model):
         return self.title
 
 # параметры самой модели
-# сортировка по названию
+# сортировка по рейтингу
     class Meta:
         ordering = ['-rating']

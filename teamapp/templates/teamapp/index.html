@@ -2,28 +2,28 @@
 
 <!--
 наследие базового шаблона с командами шаблонизатора,
-шаблон таблицы с выводом всех объектов из БД
+шаблон таблицы с выводом всех объектов из БД, с выводом ресторана, который имеет самый высокий рейтинг
 -->
 
 {% block title %}Главная страница{%endblock%}
 
 {% block content %}
-        <table align="center" border="1" width="1200" cellpadding="30">
+    <div>
+        <table align="left" border="3" width="800" cellpadding="10">
             <caption>Рейтинг ресторанов</caption>
             <thead align="center">
                 <tr>
-                    <th colspan="6">Список Ресторанов</th>
+                    <th colspan="5"><a href="{% url 'index' %}">Список Ресторанов</a></th>
                 </tr>
             </thead>
             <thead align="center">
-            <tr>
-                <th>Рестораны</th>
-                <th width="50%">Описание</th>
-                <th>Адрес</th>
-                <th>Почта</th>
-                <th>Рейтинг</th>
-                <th><a href="{% url 'top' %}">Лучший ресторан</a></th>
-            </tr>
+                <tr>
+                    <th>Рестораны</th>
+                    <th width="50%">Описание</th>
+                    <th>Адрес</th>
+                    <th>Почта</th>
+                    <th>Рейтинг</th>
+                </tr>
             </thead>
             {% for list in lists %}
             <tbody>
@@ -37,4 +37,37 @@
             </tbody>
             {% endfor %}
         </table>
+        <table border="1" align="right" width="400" cellpadding="10">
+            <thead align="center">
+                <tr>
+                    <th colspan="5"><a href="{% url 'top' %}">Лучший ресторан</a></th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>Ресторан</th>
+                    <th width="60%">Описание</th>
+                    <th>Адрес</th>
+                    <th>Почта</th>
+                    <th>Рейтинг</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for top in tops %}
+                <tr>
+                    <td>{{ top.title }}</td>
+                    <td>{{ top.description }}</td>
+                    <td>{{ top.address }}</td>
+                    <td>{{ top.mailbox }}</td>
+                    <td>{{ top.rating }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><a href="{% url 'add' %}">Добавить</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

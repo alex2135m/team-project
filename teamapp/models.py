@@ -1,8 +1,10 @@
 from django.db import models
+from django.conf import settings
 
 
 # представление строк в БД
 class List(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     title = models.CharField('Название', max_length=100)
     description = models.TextField('Описание')
     address = models.CharField('Адрес ресторана', max_length=150, null=True)
@@ -17,4 +19,4 @@ class List(models.Model):
 # параметры самой модели
 # сортировка по названию
     class Meta:
-        ordering = ['-title']
+        ordering = ['-rating']

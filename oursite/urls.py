@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 
+# маршруты уровня проекта, которые указывают на вложенные списки маршрутов
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('teamapp.urls')),

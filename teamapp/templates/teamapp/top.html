@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Лучший ресторан</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    </head>
-    <body>
-        <table align="center" border="1" width="1200" cellpadding="30">
-        <caption><a href="{% url 'index' %}">Рейтинг ресторанов</a></caption>
-            <thead align="center" >
-                <tr>
-                    <th colspan="3">Лучший ресторан</th>
-                </tr>
-            </thead>
-            <thead align="center">
-                <tr>
-                    <th>Ресторан</th>
-                    <th width="60%">Описание</th>
-                    <th>Рейтинг</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for top in tops %}
-                <tr>
-                    <td>{{ top.title }}</td><td>{{ top.description }}</td><td>{{ top.rating }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </body>
-</html>
+{% extends "layout/base.html" %}
+
+<!--
+наследие базового шаблона с командами шаблонизатора,
+шаблон таблицы с выводом ресторана, который имеет самый высокий рейтинг
+-->
+
+{% block title %}Лучший ресторан{% endblock %}
+
+{%block content%}
+<table align="center" border="1" width="1200" cellpadding="30">
+<caption><a href="{% url 'index' %}">Рейтинг ресторанов</a></caption>
+    <thead align="center" >
+        <tr>
+            <th colspan="5">Лучший ресторан</th>
+        </tr>
+    </thead>
+    <thead align="center">
+        <tr>
+            <th>Ресторан</th>
+            <th width="60%">Описание</th>
+            <th>Адрес</th>
+            <th>Почта</th>
+            <th>Рейтинг</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for top in tops %}
+        <tr>
+            <td>{{ top.title }}</td>
+            <td>{{ top.description }}</td>
+            <td>{{ top.address }}</td>
+            <td>{{ top.mailbox }}</td>
+            <td>{{ top.rating }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

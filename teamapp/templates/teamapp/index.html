@@ -40,7 +40,7 @@
         <table border="1" align="right" width="400" cellpadding="10">
             <thead align="center">
                 <tr>
-                    <th colspan="5"><a href="{% url 'top' %}">Лучший ресторан</a></th>
+                    <th colspan="5">Лучший ресторан</th>
                 </tr>
             </thead>
             <thead>
@@ -62,12 +62,15 @@
                     <td>{{ top.rating }}</td>
                 </tr>
             {% endfor %}
-            </tbody>
-            <tbody>
-                <tr>
-                    <td><a href="{% url 'add' %}">Добавить</a></td>
-                </tr>
-            </tbody>
         </table>
     </div>
+{% endblock %}
+{% block form %}
+    <h1>Добавление ресторана</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'add' %}">Добавить</a>
+        <input type="submit" value="Подтвердить">
+    </form>
 {% endblock %}

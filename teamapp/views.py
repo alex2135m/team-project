@@ -14,13 +14,6 @@ def index(request):
     return render(request, 'teamapp/index.html', context)
 
 
-# вывод страницы с самым высоким рейтингом
-def top(request):
-    tops = List.objects.order_by('-rating')[:1]
-    context = {'tops': tops}
-    return render(request, 'teamapp/top.html', context)
-
-
 # класс поиска записи по значению ключа
 # выводит страницу со сведениями о выбранном посетителем объекта
 class ListDetailView(DetailView):
@@ -32,9 +25,9 @@ class ListDetailView(DetailView):
         return context
 
 
-#
+# класс, который создает форму записи данных через шаблон в БД
 class ListCreateView(CreateView):
-    template_name = 'teamapp/create.html'
+    template_name = 'teamapp/index.html'
     form_class = ListForm
     success_url = reverse_lazy('index')
 

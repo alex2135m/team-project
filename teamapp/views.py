@@ -1,9 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import List
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
 from .forms import ListForm
-from django.urls import reverse_lazy
 
 
 # вывод всех записей из БД
@@ -25,13 +23,15 @@ class ListDetailView(DetailView):
         return context
 
 
-# класс, который создает форму записи данных через шаблон в БД
-class ListCreateView(CreateView):
-    template_name = 'teamapp/index.html'
-    form_class = ListForm
-    success_url = reverse_lazy('index')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['lists'] = List.objects.all()
-        return context
+# функция, которая создает форму записи данных через шаблон в БД
+def add(request):
+    if request.method == "POST":
+        form = ListForm(request.POST)
+        if form.is_valid():
+            list = form.save()
+            list.author = request.user
+            list.save()
+            return redirect('index')
+    else:
+        form = ListForm()
+        return render(request, 'teamapp/add.html', {'form': form})

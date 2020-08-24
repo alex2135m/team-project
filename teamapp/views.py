@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import List
-from django.views.generic.detail import DetailView
 from .forms import ListForm
 from django.http import HttpResponse
 
@@ -13,15 +12,11 @@ def index(request):
     return render(request, 'teamapp/index.html', context)
 
 
-# класс поиска записи по значению ключа
+# функция поиска записи по значению ключа
 # выводит страницу со сведениями о выбранном посетителем объекта
-class ListDetailView(DetailView):
-    model = List
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['lists'] = List.objects.all()
-        return context
+def list_detail(request, list_id):
+    list = get_object_or_404(List, pk=list_id)
+    return render(request, 'teamapp/list_detail.html', {'list': list})
 
 
 # функция, которая создает форму записи данных через шаблон в БД

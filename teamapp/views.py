@@ -26,10 +26,11 @@ def add(request):
         if form.is_valid():
             list = form.save()
             list.user = request.user
+            list.title = request.POST.get('title').capitalize().rstrip()
             list.save()
             return redirect('index')
         else:
-            return HttpResponse('<h1>Такой ресторан уже существует!</h1>')
+            return HttpResponse('<h1>Такой ресторclsан уже существует!</h1>')
     else:
         form = ListForm()
         return render(request, 'teamapp/add.html', {'form': form})

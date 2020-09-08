@@ -9,7 +9,7 @@
 
 {% block content %}
     <div>
-        <table align="left" border="3" width="800" cellpadding="10">
+        <table align="left" border="3" width="700" cellpadding="10">
             <caption>Рейтинг ресторанов</caption>
             <thead align="center">
                 <tr>
@@ -63,6 +63,6 @@
                 </tr>
             {% endfor %}
         </table>
-        <h1><a href="{% url 'add' %}">Добавить</a></h1>
     </div>
+    <h1 align="center"><a href="{% url 'add' %}">Добавить новый ресторан</a></h1>
 {% endblock %}

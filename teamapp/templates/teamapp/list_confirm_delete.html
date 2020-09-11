@@ -1,0 +1,36 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Удаление записи{% endblock %}
+{% block delete %}
+<table align="center" border="1" width="1200" cellpadding="30">
+    <caption><a href="{% url 'index' %}">Рейтинг ресторанов</a></caption>
+    <thead align="center">
+        <tr>
+            <th colspan="6">Удаление ресторана</th>
+        </tr>
+    </thead>
+    <thead align="center">
+    <tr>
+        <th>Ресторан</th>
+        <th width="50%">Описание</th>
+        <th>Адрес</th>
+        <th>Почта</th>
+        <th>Рейтинг</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ list.title }}</td>
+            <td>{{ list.description }}</td>
+            <td>{{ list.address }}</td>
+            <td>{{ list.mailbox }}</td>
+            <td>{{ list.rating }}</td>
+        </tr>
+    </tbody>
+</table>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_td }}
+    <input type="submit" value="Удалить">
+</form>
+{% endblock %}
